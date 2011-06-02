@@ -26,8 +26,7 @@ setup(
 	],
 	entry_points=\
 	"""
-        [ckan.plugins]
-	# Add plugins here, eg
-	# myplugin=ckanext.rdf:PluginClass
+    [ckan.plugins]
+    dcat_api=ckanext.rdf.plugin:DCatApi
 	""",
 )
