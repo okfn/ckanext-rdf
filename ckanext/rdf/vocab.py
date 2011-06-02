@@ -8,18 +8,21 @@ rdflib.plugin.register('sparql', rdflib.query.Processor,
 rdflib.plugin.register('sparql', rdflib.query.Result,
                        'rdfextras.sparql.query', 'SPARQLQueryResult')
 
-DCES = Namespace("http://purl.org/dc/elements/1.1/")
 DC = Namespace("http://purl.org/dc/terms/")
+DCAT = Namespace("http://www.w3.org/ns/dcat#")
+DCES = Namespace("http://purl.org/dc/elements/1.1/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
+LICENSES = Namespace("http://purl.org/okfn/licenses/")
+LOCAL = Namespace("http://opendatasearch.org/schema#")
 OPMV = Namespace("http://purl.org/net/opmv/ns#")
 OWL = Namespace("http://www.w3.org/2002/07/owl#")
+REV = Namespace("http://purl.org/stuff/rev#")
+SCOVO = Namespace("http://purl.org/NET/scovo#")
 SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 VOID = Namespace("http://rdfs.org/ns/void#")
 UUID = Namespace("urn:uuid:")
-DCAT = Namespace("http://www.w3.org/ns/dcat#")
 TIME = Namespace("http://www.w3.org/2006/time#")
 VCARD = Namespace("http://www.w3.org/2006/vcard/ns#")
-LOCAL = Namespace("http://opendatasearch.org/schema#")
 
 namespaces = {
     "rdf": RDF,
@@ -34,6 +37,9 @@ namespaces = {
     "dcat": DCAT,
     "vcard": VCARD,
     "local": LOCAL,
+    "rev": REV,
+    "scovo": SCOVO,
+    "licenses": LICENSES
 }
 
 def bind_ns(g):

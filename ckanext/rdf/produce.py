@@ -3,8 +3,8 @@ from urllib import quote
 
 from pprint import pformat
 
-from vocab import Graph, URIRef, Literal
-from vocab import DC, DCAT, FOAF, LICENSES, OWL, RDF, RDFS, REV, SCOVO, UUID, VOID, XSD, OPMV, SKOS
+from vocab import Graph, URIRef, Literal, BNode
+from vocab import DC, DCAT, FOAF, OWL, RDF, RDFS, UUID, VOID, OPMV, SKOS, REV, SCOVO, XSD, LICENSES
 
 from util import parse_date
 
@@ -19,7 +19,7 @@ def dict_produce(data):
     rec.remove((None, None, None))
 
     rec.add((uri, RDF.type, DCAT.Dataset))
-    rec.add((uri, OWL.sameAs., UUID[data["id"]]))
+    rec.add((uri, OWL.sameAs, UUID[data["id"]]))
     rec.add((uri, DC.identifier, Literal(data["name"])))
 
     if data["url"] is not None and data["url"].strip():
@@ -56,7 +56,7 @@ def dict_produce(data):
     for tag in data["tags"]:
         rec.add((uri, DCAT.keyword, Literal(tag)))
 
-    if data["ratings_average"] is not None:
+    if "ratings_average" in data and data["ratings_average"] is not None:
         rec.add((uri,REV.rating,
                  Literal(data["ratings_average"], datatype=XSD.float)))
 
@@ -182,7 +182,9 @@ def _process_extra(rec, uri, key, value):
         extra = BNode()
         rec.add((uri, DC.relation, extra))
         rec.add((extra, RDF.value, Literal(value)))
-        rec.add((extra, RDF.label, Literal(key)))
+        #TODO Is this correct?
+        #rec.add((extra, RDF.label, Literal(key)))
+        rec.add((extra, RDFS["label"], Literal(key)))
 
 def _process_relationship(self, rec, uri, rdata):
     pass
