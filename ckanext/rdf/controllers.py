@@ -26,3 +26,6 @@ class DCatApiController(ApiController):
         else:
             abort(404)
 
+    def sparql(self):
+        pass
+

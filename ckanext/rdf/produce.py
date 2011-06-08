@@ -14,7 +14,7 @@ def pkg_produce(pkg):
     return dict_produce(pkg.as_dict())
 
 def dict_produce(data):
-    uri = data['ckan_url'] if 'ckan_url' in data else BNode()
+    uri = URIRef(data['ckan_url']) if 'ckan_url' in data else BNode()
     rec = Graph(identifier=uri)
     rec.remove((None, None, None))
 
@@ -33,7 +33,6 @@ def dict_produce(data):
 
     if data["notes"] is not None:
         rec.add((uri, DC["description"], Literal(data["notes"])))
-
     if data["license_id"] is not None:
         rec.add((uri, DC["rights"], LICENSES[data["license_id"]]))
 

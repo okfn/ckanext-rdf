@@ -28,5 +28,6 @@ setup(
 	"""
     [ckan.plugins]
     dcat_api=ckanext.rdf.plugin:DCatApi
+    rdf_store=ckanext.rdf.update:StoreUpdatePlugin
 	""",
 )
