@@ -20,7 +20,7 @@ class StoreUpdatePlugin(SingletonPlugin):
         self._store_url = config.get('rdf.store_url')
 
     def update(self, update_message):
-        log.debug("Query: %s" % update_message)
+        #log.debug("Query: %s" % update_message)
         if self._store_url is None:
             log.warn("No 'rdf.store_url' is given in config, cannot update triple store.")
             return

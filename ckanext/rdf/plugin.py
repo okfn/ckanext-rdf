@@ -2,7 +2,7 @@ from ckan.plugins import implements, IRoutes, SingletonPlugin
 
 class DCatApi(SingletonPlugin):
     implements(IRoutes)
-        
+
     def before_map(self, route_map):
         controller = "ckanext.rdf.controllers:DCatApiController"
         route_map.connect("/rdf/package/{id}", controller=controller,
