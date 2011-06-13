@@ -1,6 +1,6 @@
 from time import strptime
 from datetime import date, datetime
-from vocab import Literal
+from vocab import Literal, XSD
 
 def parse_date(value):
     try:
